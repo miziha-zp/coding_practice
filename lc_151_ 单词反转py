@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Aug 10 15:05:38 2020
+
+@author: snow
+"""
+
+def remove_blank(s):
+    start=0
+    while start<=len(s)-1:
+        if s[start]==" ":
+            s=s[start+1:]
+        else:
+            break
+        start=start+1
+    end=len(s)-1
+    while end>=0:
+        if s[end]==" ":
+            s=s[:end]
+        else:
+            break
+        end=end-1
+    return s
+
+def reverse(s):
+    start=0
+    end=len(s)-1
+  #要转化为list再join才可以
+    s=list(s)
+    while start<end:
+      s[start],s[end]=s[end],s[start]
+      start=start+1
+      end=end-1
+    return "".join(s)
+
+def reverse_word(s):
+    start=0
+    end=0
+    res=""
+    while end<=len(s)-1:
+        if s[end]!=" ":
+            end=end+1
+        else:
+            cur_word=s[start:end]
+            cur_word_reverse=reverse(cur_word)
+            res=res+cur_word_reverse+" "
+            start=end+1
+            end=end+1
+            #最后一个词
+        if end==len(s)-1:
+            cur_word=s[start:end+1]
+            cur_word_reverse=reverse(cur_word)
+            res=res+cur_word_reverse
+    return res
+ 
+
+def reverse_words_151(s):
+    "输入: the sky is blue"
+    "输出: blue is sky the"
+    #思路：两次翻转，首先反转整个句子，然后反转句子里的单词“
+    #首先去掉前后的空格
+    s=remove_blank(s)
+    #反转字符串
+    s=reverse(s)
+    #反转单词
+    res=reverse_word(s)
+    return res
+
+s=" the sky is blue "
+print(s)
+res=reverse_words_151(s)
+print(res)
+    
