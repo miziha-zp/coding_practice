@@ -1,8 +1,7 @@
 
 
 
-class Solution(object):
-
+回溯法
     def helper(self,candidates,target,level,tmp,res):
         for i in range(level,len(candidates)):
             tmp.append(candidates[i])
