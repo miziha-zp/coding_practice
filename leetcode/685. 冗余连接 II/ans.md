@@ -35,7 +35,7 @@ class Solution:
         for edge in edges:
             if edge[1] != node:
                 continue
-            l,r = getroot(edge[0]),getroot(edge[1])
+            l,r = getroot(edge[0]),getroot(edge[1]) 
             if l == r:
                 return edge
             else:
